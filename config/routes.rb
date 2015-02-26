@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/' => 'functions#index'
+  get '/' => 'users#index'
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
