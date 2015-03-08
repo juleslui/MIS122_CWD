@@ -7,6 +7,13 @@
   </li>
   <h1> Inbox </h1>
   <body>
+    <table style="width:100%">
+      <tr>
+        <td>Time Left</td>
+        <td>Date Received</td>
+        <td>From</td>
+        <td>Subject</td>
+      </tr>
     <% @messages.each do |message| %>
       <tr>
         <td><%= user.last_name %>, <%= user.first_name %></td>
@@ -23,4 +30,3 @@
   <%= link_to('Login', new_user_session_path)  %>  
   </li>
 <% end %>
-<p>Find me in app/views/functions/index.html.erb</p>
