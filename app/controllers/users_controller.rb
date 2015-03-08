@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @offices = Office.all
   end
 
   # GET /users/1
@@ -12,6 +12,26 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+
+  def disable
+    @status = User.getStatus
+    @user = User.find(params[:id])
+    @user.update_attribute(:status, "disabled")
+    redirect_to "/manage"
+  end 
+
+  def terminate
+    @user = User.find(params[:id])
+    @user.update_attribute(:status, "terminated")
+    redirect_to "/manage"
+  end 
+
+  def restore
+    @status = User.getStatus
+    @user = User.find(params[:id])
+    @user.update_attribute(:status, "OK")
+    redirect_to "/manage"
+  end 
 
   # GET /users/new
   def new

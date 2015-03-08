@@ -1,3 +1,3 @@
 class Office < ActiveRecord::Base
-	has_many :user
+	has_many :users, dependent: :destroy
 end

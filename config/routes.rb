@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   get '/' => 'messages#index'
-
+  get '/manage' => 'users#index'
+  get '/compose' => 'messages#new'
+  get '/view/:id' => 'messages#show'
+  get '/department' => 'functions#show'
+  get '/sent' => 'messages#sent'
+  match 'users/:id/disable' => 'users#disable', :as => 'disable_user'
+  match 'users/:id/restore' => 'users#restore', :as => 'restore_user'
+  match 'users/:id/terminate' => 'users#terminate', :as => 'terminate_user'
+  match 'messages/:id/history' => 'messages#history', :as => 'history_message'
   devise_for :users
   resources :users
   resources :messages

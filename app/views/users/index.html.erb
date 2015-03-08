@@ -10,13 +10,22 @@
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
+    <% @offices.each do |office| %>
+    <th><%= office.office_name %>
+      <% @offices.users.each do |user| %>
       <tr>
         <td><%= user.last_name %>, <%= user.first_name %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user %></td
+        <td>Reset Password here</td>
+        <% if !user.status == "disabled" %>
+        <td><%= link_to 'Disable', disable_user_path(user) %></td>
+        <% end %>
+        <% if !user.status == "OK" %>
+        <td><%= link_to 'Restore', restore_user_path(user) %></td>
+        <% end %>
+        <td><%= link_to 'Delete', terminate_user_path(user) %></td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

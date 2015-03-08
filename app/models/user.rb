@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :office
-  has_many :message
+  has_many :messages
   acts_as_messageable
+
+  def getStatus
+  	return status
+  end
 end

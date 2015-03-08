@@ -11,24 +11,17 @@
   <li>
   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
   </li>
-  <h1> Inbox </h1>
-  <body>
-    <table style="width:100%">
-      <tr>
-        <th>Time Left</th>
-        <th>Date Received</th>
-        <th>From</th>
-        <th>Subject</th>
-      </tr>
-    <% @messages.each do |message| %>
-      <tr>
-        <td>Figure out moving [time_left] here</td>
-        <td><%= message.date_received %></td>
-        <td><%= message.received_from %></td>
-        <td><%= link_to message.subject, user %></td>
-      </tr>
-    </table>
-    <% end %>
+<p id="notice"><%= notice %></p>
+<p>Deadline: <%= @message.deadline %></p>
+<p>From: <%= @message.received_from %></p>
+<p>Subject: <%= @message.subject %></p>
+<p> HERE LIE ATTACHMENTS </p>
+<p> HERE LIE NOTES </p>
+<%= link_to 'View History', history_message_path(@message) %>
+<% if current_user.admin_check == true %>
+<%= link_to 'Close/Unclose', edit_user_path(@message) %>
+<% end %> |
+<%= link_to 'Reply (WP)', users_path %>
 <% else %>
   <li>
   <%= link_to('Register', new_user_registration_path)  %>

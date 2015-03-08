@@ -11,21 +11,19 @@
   <li>
   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
   </li>
-  <h1> Inbox </h1>
+  <h1> Message History </h1>
   <body>
     <table style="width:100%">
       <tr>
-        <th>Time Left</th>
-        <th>Date Received</th>
         <th>From</th>
-        <th>Subject</th>
+        <th>Time Sent</th>
+        <th>Time Elapsed</th>
       </tr>
     <% @messages.each do |message| %>
       <tr>
-        <td>Figure out moving [time_left] here</td>
-        <td><%= message.date_received %></td>
         <td><%= message.received_from %></td>
-        <td><%= link_to message.subject, user %></td>
+        <td><%= message.date_sent %></td>
+        <td>Figure out moving [time_left] here</td>
       </tr>
     </table>
     <% end %>
