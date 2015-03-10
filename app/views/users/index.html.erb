@@ -1,4 +1,16 @@
-<p id="notice"><%= notice %></p>
+<% if user_signed_in? %>
+<p>Welcome, <%= current_user.first_name %> <%= current_user.last_name %></p>
+  <li>
+  <%= link_to('Edit registration', edit_user_registration_path) %>
+  </li>
+  <% if current_user.admin_check == true %>
+  <li>
+  <%= link_to('Manage Users', '/manage') %>
+  </li>
+  <% end %>
+  <li>
+  <%= link_to('Compose', '/compose') %>
+  </li>
 
 <h1>Listing Users</h1>
 
@@ -10,27 +22,28 @@
   </thead>
 
   <tbody>
-    <% @offices.each do |office| %>
-    <th><%= office.office_name %>
-      <% @offices.users.each do |user| %>
+      <% @users.each do |user| %>
       <tr>
         <td><%= user.last_name %>, <%= user.first_name %></td>
-        <td><%= link_to 'Show', user %></td
+        <td><%= link_to 'Show', user %></td>
         <td>Reset Password here</td>
-        <% if !user.status == "disabled" %>
+        <% if user.status == "OK" %>
         <td><%= link_to 'Disable', disable_user_path(user) %></td>
         <% end %>
         <% if !user.status == "OK" %>
         <td><%= link_to 'Restore', restore_user_path(user) %></td>
         <% end %>
-        <td><%= link_to 'Delete', terminate_user_path(user) %></td>
+        <td><%= link_to 'Terminate', terminate_user_path(user) %></td>
+        <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% end %>
-    <% end %>
   </tbody>
 </table>
 
 <br>
 
+<% if current_user.admin_check == true %>
 <%= link_to 'New User', new_user_path %>
+<% end %>
 <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<% end %>

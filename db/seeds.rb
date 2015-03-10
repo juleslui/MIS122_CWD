@@ -6,4 +6,17 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(email: 'admin@admin.com', encrypted_password: 'admin', username: 'admin', admin_check: true)
+offices = Office.create([{ office_name: 'Administration' }, { office_name: 'Deputy' }, { office_name: 'Civil Aviation' }, { office_name: 'Maritime' }, { office_name: 'Land' }, { office_name: 'Administration in Finance' }, { office_name: 'Records' }, { office_name: 'Budget' }, { office_name: 'Plans' }, { office_name: 'Accounting' }, { office_name: 'General Services' }, { office_name: 'PIO' }, { office_name: 'Policy and Legal Bureaucracy' }, { office_name: 'Intelligence and Operations' }])
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+<%= form_for(@office) do |f| %>
+  <div class="field">
+    <%= f.label :office_name %><br />
+    <%= f.text_field :office_name, autofocus: true %>
+  </div>
+  <% if @office.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@office.errors.count, "error") %> prohibited this office from being saved:</h2>
+
+      <ul>
+      <% @office.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

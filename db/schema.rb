@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150308090238) do
+ActiveRecord::Schema.define(version: 20150309173500) do
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
     t.integer "unsubscriber_id",   limit: 4
@@ -47,9 +47,6 @@ ActiveRecord::Schema.define(version: 20150308090238) do
   end
 
   add_index "mailboxer_notifications", ["conversation_id"], name: "index_mailboxer_notifications_on_conversation_id", using: :btree
-  add_index "mailboxer_notifications", ["notified_object_id", "notified_object_type"], name: "index_mailboxer_notifications_on_notified_object_id_and_type", using: :btree
-  add_index "mailboxer_notifications", ["sender_id", "sender_type"], name: "index_mailboxer_notifications_on_sender_id_and_sender_type", using: :btree
-  add_index "mailboxer_notifications", ["type"], name: "index_mailboxer_notifications_on_type", using: :btree
 
   create_table "mailboxer_receipts", force: :cascade do |t|
     t.integer  "receiver_id",     limit: 4
@@ -64,7 +61,6 @@ ActiveRecord::Schema.define(version: 20150308090238) do
   end
 
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id", using: :btree
-  add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
 
   create_table "messages", force: :cascade do |t|
     t.string   "sent_to",       limit: 255
@@ -79,6 +75,7 @@ ActiveRecord::Schema.define(version: 20150308090238) do
     t.string   "send_to",       limit: 255
     t.datetime "time_elapsed"
     t.datetime "date_received"
+    t.string   "avatar",        limit: 255
   end
 
   create_table "offices", force: :cascade do |t|

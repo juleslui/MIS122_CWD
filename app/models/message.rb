@@ -1,3 +1,4 @@
 class Message < ActiveRecord::Base
-	belongs_to :user
+	belongs_to :office
+	mount_uploader :avatar, AvatarUploader
 end

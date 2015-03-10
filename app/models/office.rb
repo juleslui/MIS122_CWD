@@ -1,3 +1,4 @@
 class Office < ActiveRecord::Base
-	has_many :users, dependent: :destroy
+	acts_as_messageable
+	has_many :messages
 end

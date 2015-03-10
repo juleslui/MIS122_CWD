@@ -9,7 +9,7 @@
   </li>
   <% end %>
   <li>
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
   </li>
   <h1> Inbox </h1>
   <body>
@@ -20,15 +20,17 @@
         <th>From</th>
         <th>Subject</th>
       </tr>
-    <% @messages.each do |message| %>
+      <% @messages.each do |message| %>
       <tr>
-        <td>Figure out moving [time_left] here</td>
+        <td>Countdown lang po dito ser</td>
         <td><%= message.date_received %></td>
         <td><%= message.received_from %></td>
-        <td><%= link_to message.subject, user %></td>
+        <td><%= message.subject %></td>
+        <td><%= link_to 'Delete', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    </table>
+      <% end %>
     <% end %>
+
 <% else %>
   <li>
   <%= link_to('Register', new_user_registration_path)  %>

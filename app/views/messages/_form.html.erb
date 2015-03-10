@@ -1,24 +1,17 @@
-<%= form_for(@user) do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+<%= form_for(@message) do |f| %>
+  <%= f.label :send_to %>
+  <%= f.collection_select :send_to, Office::DIVISIONS, :to_s, :to_s, 
+       :include_blank => false, html: { multipart: true } %>
   <br />
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+  <%= f.label :subject %>
+  <%= f.text_field :subject %>
   <br />
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  <%= f.label :attachment %>
+  <%= f.file_field :avatar %>
+  <%= f.hidden_field :avatar_cache %>
+  <br />
+  <%= f.label :notes %>
+  <%= f.text_field :notes %>
   <div class="actions">
     <%= f.submit %>
   </div>
